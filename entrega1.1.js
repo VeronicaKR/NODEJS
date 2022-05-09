@@ -12,12 +12,12 @@ const firstSurname = 'Matarin';
 const secondSurname = 'Martinez';
 
 console.log(`My name is ${name}, my first surname is ${firstSurname} and my second surname is ${secondSurname} `)
-*/
+
 //EX2.2
-function years(){
-    return 32
+function years(age){
+    return age
 }
-console.log(`I am ${years()} years old`)
+console.log(`I am ${years(age)} years old`)
 
 //EX3
 let array = []
@@ -30,3 +30,15 @@ for (let i=0; i<10; i++){
     array.push(calculate())
 }
 console.log(array)
+*/
+//EX4
+
+const name = 'Veronica'
+let result = (function (name){
+   console.log(name) 
+}) ();
+ console.log(result)
+
+
+
+
