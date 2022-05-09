@@ -1,5 +1,5 @@
 //EX1
-/*
+
 function hello(name){
 console.log(`Hola ${name}`)
 }
@@ -17,9 +17,9 @@ console.log(`My name is ${name}, my first surname is ${firstSurname} and my seco
 function years(age){
     return age
 }
-console.log(`I am ${years(age)} years old`)
+console.log(`I am ${years(32)} years old`)
 
-//EX3
+//EX3.1
 let array = []
     
 function calculate(){
@@ -27,18 +27,21 @@ function calculate(){
     console.log(i)}} 
 
 for (let i=0; i<10; i++){
-    array.push(calculate())
+    array.push(calculate)
 }
 console.log(array)
-*/
-//EX4
 
-const name = 'Veronica'
-let result = (function (name){
-   console.log(name) 
-}) ();
- console.log(result)
+array.forEach(element=> element())
 
 
+//EX3.2
+
+const result = (function (nombre){
+    console.log(nombre)
+}) ('Veronica');
 
 
+
+
+
+ 
