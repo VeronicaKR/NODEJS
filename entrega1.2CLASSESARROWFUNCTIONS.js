@@ -24,12 +24,10 @@ nombre.dirNom()
 
 // LEVEL 3 EXERCICE 1
 
-//Escriu una function creadora d'objectes que faci instàncies d'una classe abstracta. Invoca-la amb diferents definicions.
-
 class Abstract {
     constructor (){
         if (this.constructor === Abstract){
-            throw new Error ('ERROR');
+            throw new Error ('ERROR CLASS ABSTRACT');
         }
     }
         info () {
@@ -44,9 +42,13 @@ class Persona extends Abstract {
     }
 }
 
+function createObject(param){
 let prueba1 = new Persona();
-prueba1.info('HOLA');
-prueba1.info('HELLO');
-prueba1.info('GOOD')
+prueba1.info(param);
+}
 
-const abstract = new Abstract()
+createObject('Hola')
+createObject('Hello')
+
+//PRUEBA PARA VER QUE EL 'ERROR' "DA BIEN":
+//const prueba2 = new Abstract()
