@@ -1,5 +1,6 @@
-//LEVEL 1 EXERCICE 1
-(() => {console.log(1+2)}) ()
+ //LEVEL 1 EXERCICE 1
+let sum = (() => (1+2)) ()
+console.log(sum)
 
 //LEVEL 2 EXERCICE 1
 
@@ -20,9 +21,10 @@ class Name {
 }
 
 const nombre = new Name('Veronica')
-nombre.dirNom()
+nombre.dirNom() 
 
 // LEVEL 3 EXERCICE 1
+//Escriu una function creadora d'objectes que faci instàncies d'una classe abstracta. Invoca-la amb diferents definicions.
 
 class Abstract {
     constructor (){
@@ -33,22 +35,33 @@ class Abstract {
         info () {
             throw new Error ('Metodo Abstracto')
         }
-    
-}
-
-class Persona extends Abstract {
-    info (message){
-        console.log(`THE MESSAGE:${message}`)
+        sayHello (person){
+            console.log(`HELLO ${person}`)
+        }
     }
+
+function create(person){
+let greet = function(){
+    Abstract.apply(this, arguments)
 }
 
-function createObject(param){
-let prueba1 = new Persona();
-prueba1.info(param);
+greet.prototype = Object.create(Abstract.prototype);
+greet.prototype.constructor = greet;
+
+greet.prototype.sayHello = function (){
+    console.log(`HELLO ${person}`)
 }
+return greet
+}
+let finaly = create('Veronica')
 
-createObject('Hola')
-createObject('Hello')
+finaly.prototype.sayHello()
 
-//PRUEBA PARA VER QUE EL 'ERROR' "DA BIEN":
-//const prueba2 = new Abstract()
+
+
+
+
+
+
+
+
