@@ -1,5 +1,5 @@
 //LEVEL 1 EXERCICE 1
-let result = 1
+
 function devolverPromesa(result){
     return new Promise(function(resolve,reject){
         
@@ -10,4 +10,11 @@ function devolverPromesa(result){
             }
     })
 }
-devolverPromesa(2)
+
+devolverPromesa().then(function(message){
+    console.log(message);
+}).catch(function(error){
+    console.log(error);
+});
+
+devolverPromesa(1)
