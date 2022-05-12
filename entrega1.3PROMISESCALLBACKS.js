@@ -1,4 +1,4 @@
-//LEVEL 1 EXERCICE 1
+/* //LEVEL 1 EXERCICE 1
 const frutas = [{
     fruit: 'manzana',
     color: 'verde',
@@ -55,7 +55,56 @@ let isEven = (element,callback) => {
 }
 
 isEven(2,callback)
-isEven(3,callback)
+isEven(3,callback)  */
 
 //LEVEL 2 EXERCICE 1
+
+let employees = [{
+    id: 1,
+    name: 'Linux Torvalds'
+}, {
+    id: 2,
+    name: 'Bill Gates'
+},{
+    id: 3,
+    name: 'Jeff Bezos'
+}];
+ 
+let salaries = [{
+    id: 1,
+    salary: 4000
+}, {
+    id: 2,
+    salary: 1000
+}, {
+    id: 3,
+    salary: 2000
+}];
+
+
+let getEmploye = (param) => {
+    return new Promise ((resolve,reject)=> {
+        let exist = employees.find(element => {
+            if (element.id === param){
+                return element
+            }}) 
+            console.log(exist)
+           if (exist){
+                resolve('THIS EMPLOYEE EXIST')
+            }else{
+                reject('THIS EMPLOYEE NOT EXIST')
+            }
+        }      
+    )}
+       
+
+let employe = getEmploye(5)
+
+employe.then(function(message){
+    console.log(message);
+}).catch(function(error){
+    console.log(error);
+});
+ 
+
 
