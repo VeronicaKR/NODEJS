@@ -1,10 +1,10 @@
-/* //LEVEL 1 EXERCICE 1
+//LEVEL 1 EXERCICE 1
 const frutas = [{
     fruit: 'manzana',
     color: 'verde',
     },{
-        fruit:'fresa',
-        color:'rojo'
+    fruit:'fresa',
+    color:'rojo'
     }]
     
 function getDatos (){
@@ -55,7 +55,7 @@ let isEven = (element,callback) => {
 }
 
 isEven(2,callback)
-isEven(3,callback)  */
+isEven(3,callback)  
 
 //LEVEL 2 EXERCICE 1
 
@@ -84,13 +84,12 @@ let salaries = [{
 
 let getEmploye = (param) => {
     return new Promise ((resolve,reject)=> {
-        let exist = employees.find(element => {
+        let existEmployee = employees.find(element => {
             if (element.id === param){
                 return element
             }}) 
-            console.log(exist)
-           if (exist){
-                resolve('THIS EMPLOYEE EXIST')
+            if (existEmployee){
+                resolve(existEmployee)
             }else{
                 reject('THIS EMPLOYEE NOT EXIST')
             }
@@ -98,13 +97,64 @@ let getEmploye = (param) => {
     )}
        
 
-let employe = getEmploye(5)
+let employe = getEmploye(2)
 
-employe.then(function(message){
-    console.log(message);
+employe.then(function(employe){
+    console.log(employe);
 }).catch(function(error){
     console.log(error);
 });
- 
+ console.log(employe)
+// LEVEL 2 EXERCICE 2
+
+let getSalary = (employe) => {
+    return new Promise ((resolve,reject)=> {
+        let salaryEmployee
+        salaries.find(element =>{
+            if(element.id === employe.id){
+                salaryEmployee = element.salary
+            }
+        })
+        if (salaryEmployee){
+            resolve(salaryEmployee)
+        }else {
+            reject('NOT EXIST')
+        }
+    })
+}
+
+let salary = getSalary(salaries[0])
+
+salary.then(function(salaryEmployee){
+    console.log(salaryEmployee);
+    }).catch(function(error){
+        console.log(error)
+    })
+
+// LEVEL 2 EXERCICE 3
+
+getEmploye(2)
+.then((object)=>{
+    console.log(object.name)
+    return getSalary(object)
+}).then((salary)=>{
+    console.log(salary)
+}).catch((error)=>{
+    console.log(error)
+})
+
+//LEVEL 3
+
+getEmploye(5)
+.then((object)=>{
+    console.log(object.name)
+    return getSalary(object)
+}).then((salary)=>{
+    console.log(salary)
+}).catch((error)=>{
+    console.log(error)
+})
+
+
 
 
