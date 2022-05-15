@@ -1,4 +1,4 @@
-/* let employees = [{
+let employees = [{
     id: 1,
     name: 'Linux Torvalds'
 }, {
@@ -76,7 +76,7 @@ async function resultOne (){
     return result
 }
 
-resultOne() */
+resultOne() 
 
 //LEVEL 2 EXERCICE 1
 
