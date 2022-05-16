@@ -26,4 +26,16 @@ archive.directory('./VNode', 'archivo')
 
 archive.finalize();
 
+//LEVEL2 EXERCICE 1
+
+function sayHello() {console.log('Hola')}
+let hello = setInterval(sayHello,2000);
+
+clearInterval(hello)
+
+//LEVEL 2 EXERCICE 2
+
+
+
+
 
