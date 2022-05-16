@@ -30,7 +30,7 @@ let getEmploye = (param) => {
             if (existEmployee){
                 resolve(existEmployee)
             }else{
-                reject('THIS EMPLOYEE NOT EXIST')
+                reject (new Error('THIS EMPLOYEE NOT EXIST'))
             }
         })}
               
@@ -45,7 +45,7 @@ let getEmploye = (param) => {
         if (salaryEmployee){
             resolve(salaryEmployee)
         }else {
-            reject('NOT EXIST')
+            reject(new Error('NOT EXIST'))
         }
     })
 }
@@ -106,4 +106,10 @@ async function total (num1,num2,num3){
 
 total(1,2,3)
 
-
+// LEVEL 3
+getEmployeSalary(5).catch(err=>console.log(err.message))
+getEmployeSalary('a').catch(err=>console.log(err))
+getSalary(5).catch(err=>console.log(err))
+getSalary('b').catch(err=>console.log(err))
+getEmploye(5).catch(err=>console.log(err.code))
+getEmploye('b').catch(err=>console.log(err.stack))
