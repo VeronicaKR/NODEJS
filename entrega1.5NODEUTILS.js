@@ -94,15 +94,15 @@ fs.readFile('nuevo.txt', 'utf8', function (err, data) {
 //ex1()
 
 //encriptar el archivo codificado en hexadecimal 
-function ex2() {
+ function ex2() {
     fs.readFile('text-hexadecimal.txt', 'utf8', function (err, data) {
         if (err) {
             return console.log(err)
         } else {
-            let CryptoJS = require('crypto')
+            let CryptoJS = require('Crypto-JS')
             let key = 'R2d2'
             let iv = 'R2d2'
-            key = CryptoJS.enc.Utf8.parse(key);
+            key =  CryptoJS.enc.Utf8.parse(key)
             iv = CryptoJS.enc.Utf8.parse(iv);
             let text3 = CryptoJS.AES.encrypt(data, key, {
                 iv: iv,
@@ -111,36 +111,55 @@ function ex2() {
             });
             text3 = text3.toString()
             console.log(text3)
-            fs.writeFile('text-hexadecimal.txt', text3, function (err) {
+            fs.writeFile('./text-hexadecimal.txt', text3, function (err) {
                 if (err) {
                     return console.log(err);
-                }console.log('archivo creado hexadecimal')
-            });
+                }console.log('encriptado hexadecimal')
+                function desencriptarHexadecimal(){
+                    let decrypted = CryptoJS.AES.decrypt(text3, key,{
+                        iv: iv,
+                        mode: CryptoJS.mode.CBC,
+                        padding: CryptoJS.pad.Pkcs7
+                    });
+                    decrypted = CryptoJS.enc.Utf8.stringify(text3)
+                   };
+                   // desencriptarHexadecimal()
         }
-    })
+    ) 
+        }})
 //encriptar el archivo codificado a base 64 
-    fs.readFile('texto2-base64.txt', 'utf8', function (err, data) {
+
+ fs.readFile('texto2-base64.txt', 'utf8', function (err, data) {
         if (err) {
             return console.log(err)
         } else {
-            let CryptoJS = require('crypto')
+            let CryptoJS = require('crypto-js')
             let key = 'R2d2'
             let iv = 'R2d2'
             key = CryptoJS.enc.Utf8.parse(key);
             iv = CryptoJS.enc.Utf8.parse(iv);
-            let text3 = CryptoJS.AES.encrypt(data, key, {
+            let text4 = CryptoJS.AES.encrypt(data, key, {
                 iv: iv,
                 mode: CryptoJS.mode.CBC,
                 padding: CryptoJS.pad.Pkcs7
             });
-            text3 = text3.toString()
-            console.log(text3)
-            fs.writeFile('texto2-base64.txt', text3, function (err) {
+            text4 = text4.toString()
+            console.log(text4)
+            fs.writeFile('texto2-base64.txt', text4, function (err) {
                 if (err) {
                     return console.log(err);
-                }console.log('archivo creado base64')
+                }console.log('encriptado base64')
             });
         }
-    })
-}
+    })  
+
+ }
+
+
 ex2()
+
+
+
+
+
+

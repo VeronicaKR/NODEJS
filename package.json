@@ -18,7 +18,7 @@
   "homepage": "https://github.com/VeronicaKR/Sprint1#readme",
   "dependencies": {
     "archiver": "^5.3.1",
-    "crypto": "^1.0.1"
-  },
-  "devDependencies": {}
+    "crypto": "^1.0.1",
+    "crypto-js": "4.1.1"
+  }
 }
