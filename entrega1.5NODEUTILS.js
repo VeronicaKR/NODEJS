@@ -99,7 +99,7 @@ fs.readFile('nuevo.txt', 'utf8', function (err, data) {
         if (err) {
             return console.log(err)
         } else {
-            let CryptoJS = require('Crypto-JS')
+             let CryptoJS = require('Crypto-JS')
             let key = 'R2d2'
             let iv = 'R2d2'
             key =  CryptoJS.enc.Utf8.parse(key)
@@ -110,11 +110,13 @@ fs.readFile('nuevo.txt', 'utf8', function (err, data) {
                 padding: CryptoJS.pad.Pkcs7
             });
             text3 = text3.toString()
-            console.log(text3)
+            console.log(text3) 
             fs.writeFile('./text-hexadecimal.txt', text3, function (err) {
                 if (err) {
                     return console.log(err);
                 }console.log('encriptado hexadecimal')
+
+                 //funcion para desencriptar 
                 function desencriptarHexadecimal(){
                     let decrypted = CryptoJS.AES.decrypt(text3, key,{
                         iv: iv,
@@ -122,11 +124,34 @@ fs.readFile('nuevo.txt', 'utf8', function (err, data) {
                         padding: CryptoJS.pad.Pkcs7
                     });
                     decrypted = CryptoJS.enc.Utf8.stringify(text3)
+                    console.log('desencriptado hexadecimal')
                    };
-                   // desencriptarHexadecimal()
+                  desencriptarHexadecimal()
+                  //funcion para descodificar
+                 function decodificarhexadecimal(){
+                    fs.readFile('./text-hexadecimal.txt', 'hex', function (err, data) {
+                        if (err) {
+                            return console.log(err)
+                        } else {
+                        let text5 = ''
+                      let hex = data.toString();
+                      for ( i=0; i<hex.length; i++){
+                        text5 += String.fromCharCode(parseInt(hex.substring(i,2), 16))
+                        console.log('hello')
+                      }
+                      console.log('error')
+                      console.log(text5)
+                      return text5
+                  }           
         }
-    ) 
-        }})
+            )}decodificarhexadecimal()   
+     
+        },
+    )}})
+}
+
+          
+
 //encriptar el archivo codificado a base 64 
 
  fs.readFile('texto2-base64.txt', 'utf8', function (err, data) {
@@ -149,11 +174,22 @@ fs.readFile('nuevo.txt', 'utf8', function (err, data) {
                 if (err) {
                     return console.log(err);
                 }console.log('encriptado base64')
+
+                //function para desencriptar
+                function desencriptarBase64(){
+                    let decrypted = CryptoJS.AES.decrypt(text4, key,{
+                        iv: iv,
+                        mode: CryptoJS.mode.CBC,
+                        padding: CryptoJS.pad.Pkcs7
+                    });
+                    decrypted = CryptoJS.enc.Utf8.stringify(text4)
+                    console.log('desencriptado base64')
+                   };
+                   desencriptarBase64()
             });
         }
-    })  
+    })   
 
- }
 
 
 ex2()
