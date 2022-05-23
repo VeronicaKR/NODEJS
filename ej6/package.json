@@ -1,0 +1,22 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "ejercicio1.6",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VeronicaKR/Sprint1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VeronicaKR/Sprint1/issues"
+  },
+  "homepage": "https://github.com/VeronicaKR/Sprint1#readme",
+  "devDependencies": {
+    "jest": "^28.1.0"
+  }
+}

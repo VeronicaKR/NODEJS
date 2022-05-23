@@ -113,3 +113,5 @@ getSalary(5).catch(err=>console.log(err))
 getSalary('b').catch(err=>console.log(err))
 getEmploye(5).catch(err=>console.log(err.code))
 getEmploye('b').catch(err=>console.log(err.stack))
+
+module.exports={employees, salaries,getEmployeSalary}
