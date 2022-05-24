@@ -54,9 +54,10 @@ let getEmploye = (param) => {
 
     async function getEmployeSalary (id){
         let employee = await getEmploye(id);
-        console.log(employee.name);
+        //console.log(employee.name);
         let salary = await getSalary(employee);
-            console.log(salary)
+        //console.log(salary)
+        return `el empleado ${employee.name} gana ${salary}`
         }
     
         getEmployeSalary(2)
@@ -81,13 +82,14 @@ resultOne()
 //LEVEL 2 EXERCICE 1
 
 //FUNCTION SIN PROMISE (primera parte del ejercicio)
-/* function multiply (number){
+function multiply2 (number){
     setTimeout(()=>{
         let result = number *2
         console.log(result) 
     },2000)
 }
- */
+
+ 
 function multiply (number){
     return new Promise((resolve, reject)=>{
       setTimeout(()=>{
@@ -101,7 +103,7 @@ async function total (num1,num2,num3){
     const second = await multiply(num2);
     const third = await multiply(num3);
     let sum = first+second+third
-    console.log(sum)
+    return sum
 }
 
 total(1,2,3)
@@ -114,4 +116,4 @@ getSalary('b').catch(err=>console.log(err))
 getEmploye(5).catch(err=>console.log(err.code))
 getEmploye('b').catch(err=>console.log(err.stack))
 
-module.exports={employees, salaries,getEmployeSalary}
+module.exports={multiply2,getEmployeSalary,total}
