@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/VeronicaKR/Sprint1#readme",
   "devDependencies": {
+    "@types/sinonjs__fake-timers": "^8.1.2",
     "jest": "^28.1.0"
+  },
+  "dependencies": {
+    "@sinonjs/fake-timers": "^9.1.2"
   }
 }

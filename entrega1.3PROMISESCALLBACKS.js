@@ -136,11 +136,12 @@ salary.then(function(salaryEmployee){
 getEmploye(2)
 .then((object)=>{
     console.log(object.name)
-    return getSalary(object)
-}).then((salary)=>{
+    getSalary(object)
+.then((salary)=>{
     console.log(salary)
 }).catch((error)=>{
     console.log(error)
+})
 })
 
 //LEVEL 3
@@ -157,4 +158,4 @@ getEmploye(5)
 
 
 
-
+module.exports = {getEmploye, getSalary}
