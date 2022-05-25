@@ -1,4 +1,5 @@
-const { getEmployeSalary, multiply2, total } = require('../../entrega1.4ASYNCAWAIT')
+jest.useFakeTimers();
+const { getEmployeSalary, total, multiply } = require('../../entrega1.4ASYNCAWAIT')
 
 
 /* //ASYNC AWAIT LEVEL 1 EX 1
@@ -32,21 +33,10 @@ describe('funcion con varios calculos internos ', () => {
 
 //JEST FAKE TIMERS ASYNC/AWAIT LEVEL 2 EX1
 
-jest.useFakeTimers();
-jest.spyOn(global, 'setTimeout');
-
 describe ('jestfaketimers', ()=> {
     test('retorna el doble del numero informado despues de dos segundos', async () => {
-        jest.useFakeTimers({advanceTimers: true});
-        const result = multiply2(2)
-        expect(result).toBe(4)
-        const callback = jest.fn();
-        multiply2(callback);
-        //expect(setTimeout).toHaveBeenCalledTimes(1);
-        //expect(setTimeout).toHaveBeenLastCalledWith(expect(multiply2(2)), 1000);
-        //jest.runOnlyPendingTimers();
-        //expect(callback).toBeCalled();
+     multiply(2).then(result=>expect(result).toBe(4))
         })
-        })
+    })
 
     
