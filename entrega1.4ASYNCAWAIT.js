@@ -82,12 +82,13 @@ resultOne()
 //LEVEL 2 EXERCICE 1
 
 //FUNCTION SIN PROMISE (primera parte del ejercicio)
-function multiply2 (number){
+/* function multiply (number){
     setTimeout(()=>{
-        let result = number *2
-        console.log(result) 
+        let result = number *2;
+        console.log(result) ;
+        return result;
     },2000)
-}
+} */
 
  
 function multiply (number){
@@ -116,4 +117,4 @@ getSalary('b').catch(err=>console.log(err))
 getEmploye(5).catch(err=>console.log(err.code))
 getEmploye('b').catch(err=>console.log(err.stack))
 
-module.exports={multiply2,getEmployeSalary,total}
+module.exports={getEmployeSalary,total, multiply}
