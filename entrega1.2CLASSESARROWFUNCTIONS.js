@@ -30,7 +30,7 @@ class Abstract {
     constructor (){
         if (this.constructor === Abstract){
             throw new Error ('ERROR CLASS ABSTRACT');
-        }
+        }     
     }
         info () {
             throw new Error ('Metodo Abstracto')
@@ -57,7 +57,7 @@ let finaly = create('Veronica')
 
 finaly.prototype.sayHello()
 
-
+console.log(finaly instanceof Abstract )
 
 
 
