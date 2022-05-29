@@ -1,15 +1,8 @@
 //LEVEL 1 EXERCICES
 var fs = require('fs');
-var archiver = require('archiver')
-let CryptoJS = require('Crypto-JS');
-const { enc } = require('crypto-js/core');
+const zlib = require('zlib')
 let key = 'R2d2'
 let iv = 'R2d2'
-key =  CryptoJS.enc.Utf8.parse(key)
-iv = CryptoJS.enc.Utf8.parse(iv);
-var output = fs.createWriteStream('./'+ Date.now()+'.zip');
-var archive = archiver('zip')
-archive.pipe(output); 
 
 //PHRASE
 function write(){
@@ -32,10 +25,8 @@ fs.readFile('nuevo.txt', 'utf8', function(err,data){
 
 //COMPRESSED
 function compress(){
-archive.append(fs.createReadStream('./nuevo.txt'),{name:'nuevoZip.txt'});
-archive.directory('./VNode', 'archivo')
-archive.finalize();
-}
+fs.createReadStream('./nuevo.txt').pipe(zlib.createGzip()).pipe(fs.createWriteStream('./nuevo.txt.gz'))
+};
 
 //LEVEL2 EXERCICE 1
 function hello(){
@@ -126,117 +117,13 @@ function ex1() {
 }) 
 }
 
-//encriptar el archivo codificado en hexadecimal 
- function ex2() {
-     function encrypted(){
-    fs.readFile('text-hexadecimal.txt', 'utf8', function (err, data) {
-        if (err) {
-            return console.log(err)
-        } else {
-                let text3 = CryptoJS.AES.encrypt(data, key, {
-                iv: iv,
-                mode: CryptoJS.mode.CBC,
-                padding: CryptoJS.pad.Pkcs7
-            });
-            text3 = text3.toString()
-            console.log(text3) 
-            fs.writeFile('./text-hexadecimal.txt', text3, function (err) {
-                if (err) {
-                    return console.log(err);
-                }console.log('encriptado hexadecimal')
-            })
-        }})
-    } encrypted()
-         }
-//encriptar el archivo codificado a base 64 
-function encryptedB(){
-  fs.readFile('texto2-base64.txt', 'utf8', function (err, data) {
-        if (err) {
-            return console.log(err)
-        } else {
-            let CryptoJS = require('crypto-js')
-            let key = 'R2d2'
-            let iv = 'R2d2'
-            key = CryptoJS.enc.Utf8.parse(key);
-            iv = CryptoJS.enc.Utf8.parse(iv);
-            let text4 = CryptoJS.AES.encrypt(data, key, {
-                iv: iv,
-                mode: CryptoJS.mode.CBC,
-                padding: CryptoJS.pad.Pkcs7
-            });
-            text4 = text4.toString()
-            console.log(text4)
-            fs.writeFile('texto2-base64.txt', text4, function (err) {
-                if (err) {
-                    return console.log(err);
-                }console.log('encriptado base64')
-                
-            });
-        }
-    })  
-}encryptedB() 
-
-function ex3(){
- function desencriptarHexadecimal(){
-    fs.readFile('./text-hexadecimal.txt', 'utf8', function(err,data){
-        if(err){
-            return console.log(err)
-        } else {
-            console.log(data)
-        let decrypted = CryptoJS.AES.decrypt(data, key,{
-        iv: iv,
-        mode: CryptoJS.mode.CBC,
-        padding: CryptoJS.pad.Pkcs7})
-        let textdecrypt = decrypted.toString(CryptoJS.enc.Utf8);
-        console.log('desencriptado hexadecimal: '+ textdecrypt)
-
-        let buff = new Buffer.from(textdecrypt, 'hex');
-
-        let texto5 = buff.toString('utf8')
-     
-        fs.writeFile('resulthex.txt', texto5, function (err) {
-            if (err) {
-                return console.log(err);
-            }console.log(texto5)
-       });
-    }})
-
-}desencriptarHexadecimal()
-
-function desencriptarBase64(){
-    fs.readFile('./texto2-base64.txt', 'utf8', function(err,data){
-        if(err){
-            return console.log(err)
-        } else {
-            console.log(data)
-    let decryptedb = CryptoJS.AES.decrypt(data, key,{
-        iv: iv,
-        mode: CryptoJS.mode.CBC,
-        padding: CryptoJS.pad.Pkcs7
-    });
-    let textdecryptedb = decryptedb.toString(CryptoJS.enc.Utf8)
-    console.log('desencriptado base64 ' + textdecryptedb)
-    let buff = new Buffer.from(textdecryptedb, 'base64');
-
-    let texto6 = buff.toString('utf8')
- 
-    fs.writeFile('resultb.txt', texto6, function (err) {
-        if (err) {
-            return console.log(err);
-        }console.log(texto6)
-   });
-  
- }}) 
-}desencriptarBase64()
-}
 
 
 
-write()
-read()
-compress()
-hello()
-showDirectory()
-ex1()
-//ex2()
-//ex3()
+
+//write()
+//read()
+//compress()
+//hello()
+//showDirectory()
+//ex1()
